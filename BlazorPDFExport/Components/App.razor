@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="BlazorPDFExport.styles.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <HeadOutlet />
+</head>
+
+<body>
+    <Routes />
+    
+    <script src="_framework/blazor.web.js"></script>
+    <script>
+        Blazor.registerCustomEventType('custompaste', {
+            browserEventName: 'paste',
+            createEventArgs: event => {
+                // This example only deals with pasting text, but you could use arbitrary JavaScript APIs
+                // to deal with users pasting other types of data, such as images
+                return {
+                    eventTimestamp: new Date(),
+                    pastedData: event.clipboardData.getData('text')
+                };
+            }
+        });
+    </script>
+    
+    
+</body>
+
+</html>
